@@ -23,4 +23,5 @@ The [`game`](./game/) directory contains your Godot project.
 To clean up the template:
 - Remove [`src/gdexample.cpp`](./src/gdexample.cpp) and [its header](./src/gdexample.hpp), and its reference in [`src/register_types.cpp`](./src/register_types.cpp) (though you might want to use it first to test the build works)
 - Find & Replace "godot_cpp_cmake_template" with your project name.
+- Set [game/project.godot](./game/project.godot) `config/name` to your project name, or do it from the GUI at the top of Project Settings. 
 - Replace this README file with your own.
