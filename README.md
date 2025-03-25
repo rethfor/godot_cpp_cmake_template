@@ -4,6 +4,11 @@ A **minimal**, no-cruft template for creating a [Godot](https://godotengine.org/
 
 ## 🚀 Getting Started
 
+Cross-platform support:
+|🪟 Windows|🐧 Linux|🍎 macOS|
+|:-----:|:---:|:-:|
+|✔️ OK |🚧 In Development|🚧 In Development|
+
 ### 🪟 Windows
 
 ```powershell
@@ -13,7 +18,7 @@ Enter the directory and run [`init.ps1`](init.ps1).
 
 📁 The Godot project lives in  [`game`](./game/).
 
-### 🐧 Linux / 🍎 macOS
+### Other
 
 ```shell
 git clone git@github.com:yehuthi/godot_cpp_cmake_template.git PROJECT_DIRECTORY
