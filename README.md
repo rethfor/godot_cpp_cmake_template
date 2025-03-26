@@ -2,18 +2,13 @@
 
 A **minimal**, no-cruft template for creating a [Godot](https://godotengine.org/) project paired with a C++ [GDExtension](https://docs.godotengine.org/en/stable/tutorials/scripting/gdextension/index.html), built using [CMake](https://cmake.org/).
 
-Cross-platform support:
-|🪟 Windows|🐧 Linux|🍎 macOS|
-|:-:|:-:|:-:|
-|✔️ OK|✔️ OK|❓ Needs Testing|
-
 ## 🚀 Getting Started
 
 ```sh
 git clone git@github.com:yehuthi/godot_cpp_cmake_template.git PROJECT_DIRECTORY
 ```
 On **🪟 Windows**: enter the directory and run [`init.ps1`](init.ps1).  
-On **🐧 Linux**: `cd` into the directory and run [`./init`](./init).
+On **🐧 Linux** and **🍎 macOS**: `cd` into the directory and run [`./init`](./init).
 
 📁 The Godot project lives in  [`game`](./game/).
 
@@ -37,3 +32,7 @@ To clean up the template:
 - 🗑️ Remove [`src/gdexample.cpp`](./src/gdexample.cpp), its header [`src/gdexample.hpp`](./src/gdexample.hpp), and its reference inside [`src/register_types.cpp`](./src/register_types.cpp) (though you might want to use it first to test the build works).
 - 🔍 Find & Replace `godot_cpp_cmake_template` with your project name.
 - 📝 Replace this README file with your own.
+
+## 🙏 Credits
+
+Big thanks to [mieko](https://github.com/mieko) for helping on MacOS.
