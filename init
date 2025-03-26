@@ -65,15 +65,11 @@ cd build || exit 1
 cmake ..
 if [ $? -ne 0 ]; then
     echo "❌ Failed to configure CMake."
-    read -n1 -r -p "🔴 Press any key to exit..." key
-    echo
     exit 1
 fi
 cmake --build .
 if [ $? -ne 0 ]; then
     echo "❌ Failed to build the project."
-    read -n1 -r -p "🔴 Press any key to exit..." key
-    echo
     exit 1
 fi
 
