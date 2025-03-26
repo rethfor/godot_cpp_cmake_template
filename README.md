@@ -12,7 +12,7 @@ On **🐧 Linux** and **🍎 macOS**: `cd` into the directory and run [`./init`]
 
 📁 The Godot project lives in  [`game`](./game/).
 
-### Other
+### Manual Setup
 
 ```shell
 git clone git@github.com:yehuthi/godot_cpp_cmake_template.git PROJECT_DIRECTORY
@@ -24,11 +24,7 @@ cmake ..
 cmake --build .
 ```
 
-📁 The Godot project lives in  [`game`](./game/).
-
-#### 🧹 Clean Up
-
-To clean up the template:
+And then to clean up:
 - 🗑️ Remove [`src/gdexample.cpp`](./src/gdexample.cpp), its header [`src/gdexample.hpp`](./src/gdexample.hpp), and its reference inside [`src/register_types.cpp`](./src/register_types.cpp) (though you might want to use it first to test the build works).
 - 🔍 Find & Replace `godot_cpp_cmake_template` with your project name.
 - 📝 Replace this README file with your own.
