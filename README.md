@@ -12,8 +12,8 @@ Cross-platform support:
 ```sh
 git clone git@github.com:yehuthi/godot_cpp_cmake_template.git PROJECT_DIRECTORY
 ```
-On **🪟 Windows**: enter the directory and run [`init.ps1`](init.ps1).
-On **🐧 Linux**: cd into the directory and run [`./init`](./init).
+On **🪟 Windows**: enter the directory and run [`init.ps1`](init.ps1).  
+On **🐧 Linux**: `cd` into the directory and run [`./init`](./init).
 
 📁 The Godot project lives in  [`game`](./game/).
 
