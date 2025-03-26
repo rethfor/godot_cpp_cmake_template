@@ -1,0 +1,84 @@
+#!/bin/bash
+
+# ✅ Check prerequisites
+function test_prerequisites() {
+    local failed=0
+    for cmd in "$@"; do
+        if ! command -v "$cmd" >/dev/null 2>&1; then
+            failed=1
+            echo "❌ $cmd is required."
+            case "${cmd,,}" in
+                git)
+                    echo " 📥 Download Git: https://git-scm.com/downloads/win" ;;
+                cmake)
+                    echo " 📥 Download CMake: https://cmake.org/download/" ;;
+                *)
+                    echo " ℹ️ Please install '$cmd' and try again." ;;
+            esac
+        fi
+	done
+
+	if [ $failed -ne 0 ]; then
+		exit 1
+    fi
+}
+test_prerequisites git cmake
+
+# 🏷️ Get project name
+default_project_name=$(basename "$PWD")
+read -p "📝 Enter your project name [${default_project_name}]: " project_name
+project_name=$(echo "$project_name" | xargs)  # trim whitespace
+if [ -z "$project_name" ]; then
+    project_name="$default_project_name"
+fi
+echo "📁 Using project name: '$project_name'"
+project_name_identifier=$(echo "$project_name" | sed 's/ /_/g' | tr '[:upper:]' '[:lower:]')
+
+# 📦 Fetch Git submodules
+echo "🔄 Fetching Git submodules..."
+git submodule update --init --recursive
+if [ $? -ne 0 ]; then
+    echo "❌ Failed to fetch Git submodules."
+    exit 1
+fi
+echo "✅ Git submodules updated."
+
+# 🔧 Apply project name
+dummy_name="godot_cpp_cmake_template"
+function update_project_name() {
+    local file_path="$1"
+    local new_name="$2"
+    if [ -z "$new_name" ]; then
+        new_name="$project_name_identifier"
+    fi
+    sed -i "s/${dummy_name}/${new_name}/g" "$file_path"
+}
+echo "🔧 Applying project name..."
+update_project_name "./CMakeLists.txt"
+update_project_name "./game/project.godot" "$project_name"
+echo "✅ Project name applied."
+
+# 🛠️ Build with CMake
+echo "🏗️ Building the project..."
+mkdir -p build || { echo "❌ Failed to create build directory."; exit 1; }
+cd build || exit 1
+cmake ..
+if [ $? -ne 0 ]; then
+    echo "❌ Failed to configure CMake."
+    read -n1 -r -p "🔴 Press any key to exit..." key
+    echo
+    exit 1
+fi
+cmake --build .
+if [ $? -ne 0 ]; then
+    echo "❌ Failed to build the project."
+    read -n1 -r -p "🔴 Press any key to exit..." key
+    echo
+    exit 1
+fi
+
+# 🎉 Setup complete
+echo "✅ Setup complete! 🎉"
+cd ..
+rm -f README.md LICENSE init.ps1 "$0"
+rm -rf .github/
