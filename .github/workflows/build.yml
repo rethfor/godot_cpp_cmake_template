@@ -1,0 +1,13 @@
+name: Build
+run-name: ${{ github.actor }} is building the template 🏗️
+on: [push]
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'
+      - name: Build
+        uses: threeal/cmake-action@v2.1.0
