@@ -6,8 +6,8 @@ A **minimal**, no-cruft template for creating a [Godot](https://godotengine.org/
 
 Cross-platform support:
 |🪟 Windows|🐧 Linux|🍎 macOS|
-|:-----:|:---:|:-:|
-|✔️ OK |🚧 In Development|🚧 In Development|
+|:-:|:-:|:-:|
+|✔️ OK|✔️ OK|❓ Needs Testing|
 
 ### 🪟 Windows
 
