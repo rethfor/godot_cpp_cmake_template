@@ -2,19 +2,18 @@
 
 A **minimal**, no-cruft template for creating a [Godot](https://godotengine.org/) project paired with a C++ [GDExtension](https://docs.godotengine.org/en/stable/tutorials/scripting/gdextension/index.html), built using [CMake](https://cmake.org/).
 
-## 🚀 Getting Started
-
 Cross-platform support:
 |🪟 Windows|🐧 Linux|🍎 macOS|
 |:-:|:-:|:-:|
 |✔️ OK|✔️ OK|❓ Needs Testing|
 
-### 🪟 Windows
+## 🚀 Getting Started
 
-```powershell
+```sh
 git clone git@github.com:yehuthi/godot_cpp_cmake_template.git PROJECT_DIRECTORY
 ```
-Enter the directory and run [`init.ps1`](init.ps1).
+On **🪟 Windows**: enter the directory and run [`init.ps1`](init.ps1).
+On **🐧 Linux**: cd into the directory and run [`./init`](./init).
 
 📁 The Godot project lives in  [`game`](./game/).
 
