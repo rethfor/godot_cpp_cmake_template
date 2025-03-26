@@ -84,4 +84,6 @@ $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');
 Set-Location -Path ..
 Remove-Item -Path "README.md" -Force
 Remove-Item -Path "LICENSE" -Force
+Remove-Item -Path "init" -Force
 Remove-Item "$PSCommandPath"
+Remove-Item -Path ".github/" -Force -Recurse
