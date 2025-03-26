@@ -11,3 +11,8 @@ jobs:
           submodules: 'recursive'
       - name: Build
         uses: threeal/cmake-action@v2.1.0
+      - name: Check Binary
+        uses: andstor/file-existence-action@v3
+        with:
+          files: "game/bin/libgodot_cpp_cmake_template.linux.template_debug.x86_64.so, game/bin/godot_cpp_cmake_template.gdextension"
+          fail: true
