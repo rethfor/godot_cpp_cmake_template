@@ -1,0 +1,108 @@
+{
+	"Godot: Register Class": {
+		"scope": "cpp,hpp,h",
+		"prefix": "gdregister",
+		"description": "Register a type in Godot's ClassDB.",
+		"body": [
+			"GDREGISTER_${1|RUNTIME_CLASS,CLASS,ABSTRACT_CLASS,VIRTUAL_CLASS,INTERNAL_CLASS|}(${2:$TM_FILENAME_BASE});\n$0"
+		]
+	},
+
+	"Godot: Class Declaration": {
+		"scope": "cpp,hpp,h",
+		"prefix": "gdclass",
+		"description": "A Godot class scaffolding (pair with `gdclass_impl`).",
+		"body": [
+			"class ${1:$TM_FILENAME_BASE} : public ${2|godot::Object,godot::Node3D,godot::Node2D,godot::Resource,godot::RefCounted|} {",
+			"\tGDCLASS(${1}, ${2});",
+			"protected:",
+			"\tstatic void _bind_methods();",
+			"public:",
+			"\t${1}();",
+			"\t~${1}();",
+			"\tvoid _notification(int p_what);",
+			"\t$0",
+			"};",
+		]
+	},
+
+	"Godot: Class Implementation": {
+		"scope": "cpp,hpp,h",
+		"prefix": "gdclass_impl",
+		"description": "A Godot class scaffolding implementation (pair with `gdclass`).",
+		"body": [
+			"void ${1:$TM_FILENAME_BASE}::_bind_methods() {}",
+			"",
+			"${1:$TM_FILENAME_BASE}::${1}() {}",
+			"",
+			"${1:$TM_FILENAME_BASE}::~${1}() {}",
+			"",
+			"void ${1:$TM_FILENAME_BASE}::_notification(int p_what) {",
+			"\tswitch (p_what) {",
+			"\t\tcase NOTIFICATION_READY: { } break;",
+			"\t\tcase NOTIFICATION_PROCESS: { } break;",
+			"\t\tcase NOTIFICATION_PHYSICS_PROCESS: { } break;",
+			"\t\tcase NOTIFICATION_ENTER_TREE: { } break;",
+			"\t\tcase NOTIFICATION_EXIT_TREE: { } break;",
+			"\t}",
+			"}"
+		]
+	},
+	
+	"Godot: Property Declaration": {
+		"scope": "cpp,hpp,h",
+		"prefix": "gdprop",
+		"description": "A Godot property declaration.",
+		"body": [
+			"${1:type} ${2:property};",
+			"void ${2}_set(${1} new_${2});",
+			"${1} ${2}_get() const;",
+		]
+	},
+
+	"Godot: Property Implementation": {
+		"scope": "cpp,hpp,h",
+		"prefix": "gdprop_impl",
+		"description": "A Godot property implementation.",
+		"body": [
+			"void ${1:$TM_FILENAME_BASE}::${2:property}_set(${3:type} new_${2}) {",
+			"\tthis->${2} = new_${2};",
+			"}",
+			"${3} ${1:$TM_FILENAME_BASE}::${2}_get() const {",
+			"\treturn this->${2};",
+			"}"
+		]
+	},
+
+	"Godot: Property Register": {
+		"scope": "cpp,hpp,h",
+		"prefix": "gdprop_register",
+		"description": "A Godot property registration (in `_bind_methods`).",
+		"body": [
+			"godot::ClassDB::bind_method(godot::D_METHOD(\"${1:property}_set\", \"$1\"), &${2:$TM_FILENAME_BASE}::$1_set);",
+			"godot::ClassDB::bind_method(godot::D_METHOD(\"$1_get\"), &$2::$1_get);",
+			"ADD_PROPERTY(",
+			"\tgodot::PropertyInfo(godot::Variant::${3|OBJECT,BOOL,INT,FLOAT,STRING,VECTOR2,VECTOR2I,RECT2,RECT2I,VECTOR3,VECTOR3I,TRANSFORM2D,VECTOR4,VECTOR4I,PLANE,QUATERNION,AABB,BASIS,TRANSFORM3D,PROJECTION,COLOR,STRING_NAME,NODE_PATH,RID,CALLABLE,SIGNAL,DICTIONARY,ARRAY,PACKED_BYTE_ARRAY,PACKED_INT32_ARRAY,PACKED_INT64_ARRAY,PACKED_FLOAT32_ARRAY,PACKED_FLOAT64_ARRAY,PACKED_STRING_ARRAY,PACKED_VECTOR2_ARRAY,PACKED_VECTOR3_ARRAY,PACKED_COLOR_ARRAY,PACKED_VECTOR4_ARRAY,NIL|}, \"$1\"),",
+			"\t\"set_$1\", \"get_$1\"",
+			");",
+		]
+	},
+
+	"Godot: Method Register": {
+		"scope": "cpp,hpp,h",
+		"prefix": "gdmethod",
+		"description": "A method registration (in `_bind_methods`).",
+		"body": [
+			"godot::ClassDB::bind_method(godot::D_METHOD(\"${1:Method}\"$0), &${2:$TM_FILENAME_BASE}::$1);"
+		]
+	},
+
+	"Godot: Server Singleton": {
+		"scope": "cpp,hpp,h",
+		"prefix": "gdserver",
+		"description": "Gets a Godot server singleton (options are not exhaustive).",
+		"body": [
+			"godot::${1|RenderingServer,PhysicsServer3D,PhysicsServer2D,AudioServer,TranslationServer,TextServer,NavigationServer2D,NavigationServer3D,CameraServer,XRServer,DisplayServer|}::get_singleton()$0"
+		]
+	}
+}
