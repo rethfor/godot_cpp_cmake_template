@@ -1,0 +1,4 @@
+[submodule "godot_cpp_cmaker"]
+	path = godot_cpp_cmaker
+	url = https://github.com/rethfor/godot_cpp_cmaker.git
+	branch = master
